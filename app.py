@@ -8,6 +8,7 @@ import os
 from routes.base_predict import base_predict
 from routes.aco_predict import aco_predict
 from routes.lkh_predict import lkh_predict
+from routes.local_search_predict import local_search_predict
 
 # APP CONFIG
 app = Flask(__name__)
@@ -21,6 +22,7 @@ app.config['UPLOAD_FOLDER'] = 'static'
 app.add_url_rule('/predict', 'predict', base_predict, methods=["POST"])
 app.add_url_rule('/aco_predict', 'aco_predict', aco_predict, methods=["POST"])
 app.add_url_rule('/lkh_predict', 'lkh_predict', lkh_predict, methods=["POST"])
+app.add_url_rule('/local_search_predict', 'local_search_predict',  local_search_predict, methods=["POST"])
 
 if __name__ == '__main__':
     app.run(debug=True)
