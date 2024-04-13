@@ -7,6 +7,7 @@ from models.lkh import lkh
 
 # IMPORT HELPERS
 from helpers.create_weight_matrix import create_weight_matrix
+from helpers.calculate_tsp_distance import calculate_tsp_distance
 
 
 def lkh_predict():
@@ -46,9 +47,12 @@ def lkh_predict():
         weight_matrix = create_weight_matrix(coordinates)
 
         permutation_LKH = lkh(weight_matrix)
+
+        # Function to calculate total distance of TSP tour
+        distance = calculate_tsp_distance(coordinates, permutation_LKH)
         
         # Return the predictions
-        return jsonify({'Permutation': permutation_LKH, 'Distance': 123})
+        return jsonify({'Permutation': permutation_LKH, 'Distance': distance})
 
 
     except Exception as e:
